@@ -1,5 +1,5 @@
 
-// initiate 
+// initiate and basic setting
 const express = require('express')
 const exphbs = require('express-handlebars')
 
@@ -20,14 +20,14 @@ app.use(express.static('public'))
 
 // set the main page
 app.get('/restaurants', (req, res) => {
-    // res.send('test')
+
     res.render('index', {rests:restList.results})
 })
 
 // show the details
 app.get('/restaurants/:id', (req, res) => {
     const id = req.params.id
-    // console.log(req)
+
     const detail = restList.results.find(rest => rest.id.toString() === id)
     console.log(detail)
     res.render('show', {detail: detail})
@@ -37,7 +37,9 @@ app.get('/restaurants/:id', (req, res) => {
 app.get('/search', (req,res) =>{
     const keyword = req.query.keyword.toLowerCase()
     const filteredList = restList.results.filter(rest => {return (rest.name.toLowerCase()).includes(keyword.toLowerCase())})
-    res.render('index', {rests: filteredList, keyword: keyword})
+    const categoryList = restList.results.filter(rest => {return (rest.category.toLowerCase()).includes(keyword.toLowerCase())})
+    const searchResult = filteredList.concat(categoryList)
+    res.render('index', {rests: searchResult, keyword: keyword})
 })
 
 // start and listen on the Express Server
