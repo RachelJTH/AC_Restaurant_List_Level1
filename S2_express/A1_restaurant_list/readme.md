@@ -3,13 +3,19 @@
 
 ## Getting Started
     
-    1. 複製程式碼
+    1. 複製/下載程式碼
     
-    git clone https://github.com/RachelJTH/AC-practice/tree/main/S2_express/A1_restaurant_list
+    git clone https://github.com/RachelJTH/AC_Restaurant_List_Level1/
+    
     
     2. 執行腳本
+    
+    ``` 
+        cd [pwd]\AC_Restaurant_List_Level1\S2_express\A1_restaurant_list
     ```
-    npm run dev
+        
+    ```
+        npm run dev
     ```
 
     3. 進入主畫面
