@@ -20,16 +20,13 @@ app.use(express.static('public'))
 
 // set the main page
 app.get('/restaurants', (req, res) => {
-
     res.render('index', {rests:restList.results})
 })
 
 // show the details
 app.get('/restaurants/:id', (req, res) => {
     const id = req.params.id
-
     const detail = restList.results.find(rest => rest.id.toString() === id)
-    console.log(detail)
     res.render('show', {detail: detail})
 })
 
