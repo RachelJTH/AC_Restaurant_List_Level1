@@ -11,7 +11,7 @@
     2. 執行腳本
     
     ``` 
-        cd [pwd]\AC_Restaurant_List_Level1\S2_express\A1_restaurant_list
+        cd [pwd]\AC_Restaurant_List_Level1\
     ```
         
     ```
