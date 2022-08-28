@@ -33,12 +33,10 @@ app.get('/restaurants/:id', (req, res) => {
 // req.query (of Express package)
 app.get('/search', (req,res) =>{
     const keyword = req.query.keyword.toLowerCase().trim() // remove space
-    const filteredList = restList.results.filter(rest => {return (rest.name.toLowerCase()).includes(keyword.toLowerCase())})
-    const categoryList = restList.results.filter(rest => {return (rest.category.toLowerCase()).includes(keyword.toLowerCase())})
-    const searchResult = filteredList.concat(categoryList)
+    const searchResult = restList.results.filter(rest =>  rest.name.toLowerCase().includes(keyword.toLowerCase()) || rest.category.toLowerCase().includes(keyword.toLowerCase()))
     if (searchResult.length === 0){
         const message = `查詢的關鍵字，無搜尋結果; 請重新搜尋其他關鍵字或點擊"確認"鍵，返回主畫面`
-        res.render('index', {message})
+        res.render('index', {message, keyword})
     }else{
         res.render('index', {rests: searchResult, keyword: keyword})
     }
